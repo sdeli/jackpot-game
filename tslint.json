@@ -27,6 +27,7 @@
     ],
     "no-console": [true, "debug", "info", "time", "timeEnd", "trace"],
     "no-empty": false,
+    "no-string-literal": false,
     "no-inferrable-types": [true, "ignore-params"],
     "no-non-null-assertion": true,
     "no-redundant-jsdoc": true,
@@ -39,7 +40,6 @@
     },
     "space-before-function-paren": {
       "options": {
-        "anonymous": "never",
         "asyncArrow": "always",
         "constructor": "never",
         "method": "never",

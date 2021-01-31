@@ -9,16 +9,7 @@
 
     <ng-template #desktopView>
       <div fxLayout="row" fxLayoutAlign="space-between center" fxFill>
-        <h2 class="game-category">Top Games</h2>
-        <h2 class="game-category">New Games</h2>
-        <h2 class="game-category">Slots</h2>
-        <h2 class="game-category">Jackpots</h2>
-        <h2 class="game-category">Live</h2>
-        <h2 class="game-category">Blackjack</h2>
-        <h2 class="game-category">Roulette</h2>
-        <h2 class="game-category">Table</h2>
-        <h2 class="game-category">Poker</h2>
-        <h2 class="game-category">Other</h2>
+        <h2 class="game-category" *ngFor="let gameCateg of gameCategories">{{ gameCateg.label }}</h2>
       </div>
     </ng-template>
   </mat-toolbar>
@@ -26,16 +17,12 @@
   <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sideNav mode="side" [fixedInViewport]="isMaxLargeTablet" fixedTopGap="56">
       <mat-nav-list>
-        <a mat-list-item routerLink=".">Top Games</a>
-        <a mat-list-item routerLink=".">New Games</a>
-        <a mat-list-item routerLink=".">Slots</a>
-        <a mat-list-item routerLink=".">Jackpots</a>
-        <a mat-list-item routerLink=".">Live</a>
-        <a mat-list-item routerLink=".">Blackjack</a>
-        <a mat-list-item routerLink=".">Roulette</a>
-        <a mat-list-item routerLink=".">Table</a>
-        <a mat-list-item routerLink=".">Poker</a>
-        <a mat-list-item routerLink=".">Other</a>
+        <a
+          mat-list-item
+          [routerLink]="['/games', gameCateg.category]"
+          *ngFor="let gameCateg of gameCategories; index as i"
+          >{{ gameCateg.label }}</a
+        >
       </mat-nav-list>
     </mat-sidenav>
 
