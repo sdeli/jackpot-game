@@ -1,6 +1,12 @@
 import { GameCategory } from './games-feed.types';
 
-export const GameCategoriesLabelMapArr = [
+export interface GameCategoriesLabelMap {
+  category: GameCategory;
+  label: string;
+  isActive?: boolean;
+}
+
+export const GameCategoriesLabelMapArr: GameCategoriesLabelMap[] = [
   { category: GameCategory.TopGames, label: 'Top Games' },
   { category: GameCategory.NewGames, label: 'New Games' },
   { category: GameCategory.Slots, label: 'Slots' },

@@ -1,10 +1,12 @@
 import { GameCategory } from './../games/games-feed.types';
 import { BreakpointObserver, BreakpointState, Breakpoints } from '@angular/cdk/layout';
-import { AfterViewChecked, AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { MatDrawer } from '@angular/material/sidenav';
 import { Observable } from 'rxjs';
 import { GameCategoriesLabelMapArr } from '@app/games/game-feed.constants';
+import { NavigationStart, Router } from '@angular/router';
+import { untilDestroyed } from '@app/shared/until-destroyed';
 
 export enum MediaBreakPoints {
   MaxLargeTablet = '(max-width: 1279px)',
@@ -15,7 +17,7 @@ export enum MediaBreakPoints {
   templateUrl: './shell.component.html',
   styleUrls: ['./shell.component.scss'],
 })
-export class ShellComponent implements OnInit, AfterViewInit {
+export class ShellComponent implements OnInit, AfterViewInit, OnDestroy {
   gameCategories = GameCategoriesLabelMapArr;
   breakPoint$: Observable<BreakpointState>;
   media$: Observable<MediaChange[]>;
@@ -23,13 +25,27 @@ export class ShellComponent implements OnInit, AfterViewInit {
 
   @ViewChild('sideNav') sideNav: MatDrawer;
 
-  constructor(media: MediaObserver, private readonly breakpointObserver: BreakpointObserver) {
+  constructor(media: MediaObserver, private readonly breakpointObserver: BreakpointObserver, private router: Router) {
     this.media$ = media.asObservable();
     this.breakPoint$ = breakpointObserver.observe([MediaBreakPoints.MaxLargeTablet]);
     this.isMaxLargeTablet = this.breakpointObserver.isMatched(MediaBreakPoints.MaxLargeTablet);
   }
 
   ngOnInit() {
+    let gameCategory = this.router.url.split('/').pop() as GameCategory;
+    this.markActivatedCategory(gameCategory);
+
+    this.router.events.pipe(untilDestroyed(this)).subscribe(event => {
+      if (event instanceof NavigationStart) {
+        console.log(event);
+        gameCategory = event.url.split('/').pop() as GameCategory;
+        this.markActivatedCategory(gameCategory);
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    // ngOnDestroy is needed for untilDestroyed
   }
 
   ngAfterViewInit() {
@@ -43,5 +59,9 @@ export class ShellComponent implements OnInit, AfterViewInit {
     if (!this.isMaxLargeTablet && this.sideNav.opened) {
       this.sideNav.toggle();
     }
+  }
+
+  markActivatedCategory(gameCategory: GameCategory) {
+    this.gameCategories.forEach(gameCateg => (gameCateg.isActive = gameCateg.category === gameCategory));
   }
 }
