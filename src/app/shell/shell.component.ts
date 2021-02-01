@@ -37,7 +37,6 @@ export class ShellComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.router.events.pipe(untilDestroyed(this)).subscribe(event => {
       if (event instanceof NavigationStart) {
-        console.log(event);
         gameCategory = event.url.split('/').pop() as GameCategory;
         this.markActivatedCategory(gameCategory);
       }

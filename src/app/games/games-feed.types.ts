@@ -2,7 +2,7 @@ export enum GameCategory {
   NewGames = 'new',
   TopGames = 'top',
   Slots = 'slots',
-  Jackpots = 'jackpots',
+  Jackpot = 'jackpot',
   Live = 'live',
   Blackjack = 'blackjack',
   Roulette = 'roulette',

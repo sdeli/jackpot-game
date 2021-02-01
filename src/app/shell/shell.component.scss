@@ -4,12 +4,6 @@ $active-nav-item-color: #90c200;
 .jg-shell {
   display: flex;
   flex-direction: column;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  position: fixed;
-  z-index: 2;
 
   .title {
     margin-left: 8px;
@@ -26,9 +20,6 @@ $active-nav-item-color: #90c200;
   }
 
   &.--over-large-tablet {
-    position: absolute;
-    z-index: unset;
-
     .game-category {
       font-weight: 300;
       font-size: 26px;
@@ -43,9 +34,6 @@ $active-nav-item-color: #90c200;
 }
 
 ::ng-deep .jg-shell {
-  .mat-drawer {
-    top: 40px;
-  }
   .mat-toolbar {
     background: $navbar-grey;
     color: white;

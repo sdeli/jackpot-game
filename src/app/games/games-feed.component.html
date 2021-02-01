@@ -1,6 +1,6 @@
 <div class="games-feed" fxLayout="column" fxLayoutAlign="center center">
   <div class="container">
-    <div class="game" *ngFor="let game of games">
+    <div class="game" *ngFor="let game of gamesInCurrentCategory">
       <img class="img" [src]="game.image" alt="" />
       <ng-container *ngIf="game.jackpot">
         <span class="jackpot-brackground"></span>

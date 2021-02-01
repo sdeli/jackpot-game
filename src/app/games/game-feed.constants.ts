@@ -10,7 +10,7 @@ export const GameCategoriesLabelMapArr: GameCategoriesLabelMap[] = [
   { category: GameCategory.TopGames, label: 'Top Games' },
   { category: GameCategory.NewGames, label: 'New Games' },
   { category: GameCategory.Slots, label: 'Slots' },
-  { category: GameCategory.Jackpots, label: 'Jackpots' },
+  { category: GameCategory.Jackpot, label: 'Jackpots' },
   { category: GameCategory.Live, label: 'Live' },
   { category: GameCategory.Blackjack, label: 'Blackjack' },
   { category: GameCategory.Roulette, label: 'Roulette' },

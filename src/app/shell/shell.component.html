@@ -1,5 +1,5 @@
 <div class="jg-shell" [class.--over-large-tablet]="!isMaxLargeTablet">
-  <mat-toolbar class="toolbar">
+  <mat-toolbar>
     <ng-container *ngIf="isMaxLargeTablet; else desktopView">
       <button mat-icon-button (click)="sideNav.toggle()">
         <mat-icon>menu</mat-icon>
@@ -22,7 +22,7 @@
   </mat-toolbar>
 
   <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #sideNav mode="side" [fixedInViewport]="isMaxLargeTablet" fixedTopGap="40">
+    <mat-sidenav #sideNav mode="side" [fixedInViewport]="isMaxLargeTablet" fixedTopGap="50">
       <mat-nav-list>
         <a
           mat-list-item
