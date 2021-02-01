@@ -14,7 +14,8 @@
           *ngFor="let gameCateg of gameCategories; index as i"
           [class.--active]="gameCateg.isActive"
           [routerLink]="['/games', gameCateg.category]"
-          fxLayout="row" fxLayoutAlign="center center"
+          fxLayout="row"
+          fxLayoutAlign="center center"
           >{{ gameCateg.label }}</a
         >
       </div>

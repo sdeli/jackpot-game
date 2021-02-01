@@ -32,9 +32,15 @@ $game-border-radius: 15px;
 
       img {
         border-radius: $game-border-radius;
+        box-shadow: none;
+        transition: box-shadow 0.3s ease;
+
+        &:hover {
+          box-shadow: 0px 0px 4px 5px #90c300;
+        }
       }
 
-      .jackpot-brackground {
+      .jackpot-background {
         @extend .jackpot;
         background: black;
         opacity: 0.4;
