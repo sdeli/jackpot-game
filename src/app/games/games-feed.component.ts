@@ -5,6 +5,8 @@ import { GamesfeedService } from './games-feed.service';
 import { first } from 'rxjs/operators';
 import { untilDestroyed } from '@app/shared/until-destroyed';
 import { uniq as _uniq } from 'lodash';
+import { MatDialog } from '@angular/material/dialog';
+import { DescriptionDialogComponent } from './components/create-user/description-dialog.component';
 
 @Component({
   selector: 'jg-games',
@@ -18,7 +20,12 @@ export class GamesFeedComponent implements OnInit, OnDestroy {
   currentCategory: GameCategory;
   gameCategories = Object.values(GameCategory);
   otherCategories: Record<string, boolean> = {};
-  constructor(private route: ActivatedRoute, private service: GamesfeedService, private readonly router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private service: GamesfeedService,
+    private readonly router: Router,
+    readonly dialog: MatDialog,
+  ) {}
 
   async ngOnInit() {
     this.route.params.pipe(untilDestroyed(this)).subscribe(params => {
@@ -54,6 +61,7 @@ export class GamesFeedComponent implements OnInit, OnDestroy {
     }));
     this.otherCategories = this.getOtherCategories();
     this.gamesInCurrentCategory = this.getGamesInCurrentCategory();
+    this.openDescriptionDialog();
   }
 
   ngOnDestroy() {
@@ -99,5 +107,11 @@ export class GamesFeedComponent implements OnInit, OnDestroy {
 
       return acc;
     }, []);
+  }
+
+  openDescriptionDialog() {
+    this.dialog.open(DescriptionDialogComponent, {
+      autoFocus: false,
+    });
   }
 }

@@ -55,6 +55,12 @@ $game-border-radius: 15px;
       }
     }
   }
+
+  .description-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  }
 }
 
 @media (min-width: 540px) {
