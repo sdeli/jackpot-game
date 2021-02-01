@@ -8,7 +8,7 @@ const routes: Routes = [
     { path: '', redirectTo: 'games', pathMatch: 'full' },
     {
       path: 'games',
-      loadChildren: () => import('./games/games-feed.module').then(m => m.GamesFeedModule),
+      loadChildren: () => import('./games-feed/games-feed.module').then(m => m.GamesFeedModule),
     },
     { path: '**', redirectTo: '/games' },
   ]),

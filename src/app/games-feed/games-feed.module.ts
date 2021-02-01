@@ -1,5 +1,5 @@
 import { DescriptionDialogComponent } from './components/create-user/description-dialog.component';
-import { MaterialModule } from './../shared/material.module';
+import { MaterialModule } from '../shared/material.module';
 import { GamesFeedRoutingModule } from './games-feed-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';

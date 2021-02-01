@@ -1,10 +1,10 @@
-import { GameCategory } from './../games/games-feed.types';
+import { GameCategory } from '../games-feed/games-feed.types';
 import { BreakpointObserver, BreakpointState, Breakpoints } from '@angular/cdk/layout';
 import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { MatDrawer } from '@angular/material/sidenav';
 import { Observable } from 'rxjs';
-import { GameCategoriesLabelMapArr } from '@app/games/game-feed.constants';
+import { GameCategoriesLabelMapArr } from '@app/games-feed/games-feed.constants';
 import { NavigationStart, Router } from '@angular/router';
 import { untilDestroyed } from '@app/shared/until-destroyed';
 
