@@ -25,6 +25,9 @@ $active-nav-item-color: #90c200;
       font-size: 26px;
       color: white;
       text-decoration: none;
+      padding-right: 20px;
+      padding-left: 20px;
+      height: 100%;
 
       &.--active {
         background: $active-nav-item-color;

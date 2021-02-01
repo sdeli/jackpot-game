@@ -11,10 +11,10 @@
       <div fxLayout="row" fxLayoutAlign="space-between center" fxFill>
         <a
           class="game-category"
-          [class.--active]="gameCateg.isActive"
-          mat-list-item
-          [routerLink]="['/games', gameCateg.category]"
           *ngFor="let gameCateg of gameCategories; index as i"
+          [class.--active]="gameCateg.isActive"
+          [routerLink]="['/games', gameCateg.category]"
+          fxLayout="row" fxLayoutAlign="center center"
           >{{ gameCateg.label }}</a
         >
       </div>
