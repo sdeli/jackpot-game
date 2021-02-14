@@ -20,13 +20,11 @@ export enum MediaBreakPoints {
 export class ShellComponent implements OnInit, AfterViewInit, OnDestroy {
   gameCategories = GameCategoriesLabelMapArr;
   breakPoint$: Observable<BreakpointState>;
-  media$: Observable<MediaChange[]>;
   isMaxLargeTablet: boolean;
 
   @ViewChild('sideNav') sideNav: MatDrawer;
 
-  constructor(media: MediaObserver, private readonly breakpointObserver: BreakpointObserver, private router: Router) {
-    this.media$ = media.asObservable();
+  constructor(private readonly breakpointObserver: BreakpointObserver, private router: Router) {
     this.breakPoint$ = breakpointObserver.observe([MediaBreakPoints.MaxLargeTablet]);
     this.isMaxLargeTablet = this.breakpointObserver.isMatched(MediaBreakPoints.MaxLargeTablet);
   }

@@ -17,19 +17,10 @@ export interface Game {
   name: string;
   image: string;
   jackpot: number;
+  isNew?: boolean;
 }
 
 export interface Jackpot {
   game: string;
   amount: number;
 }
-
-// ball
-// virtual
-
-// Live
-// table
-
-// no top ribbon on the image neather provided
-// no new ribbon seen
-// no fonts families, sizes and weights provided

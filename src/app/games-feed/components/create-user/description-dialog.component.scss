@@ -40,7 +40,9 @@ $label-color: #292929;
   }
 }
 
-::ng-deep .mat-dialog-container {
-  border-radius: 8px;
-  padding: 0;
+::ng-deep .description {
+  .mat-dialog-container {
+    border-radius: 8px;
+    padding: 0;
+  }
 }

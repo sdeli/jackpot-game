@@ -31,7 +31,7 @@ export class GamesFeedComponent implements OnInit, OnDestroy {
     this.route.params.pipe(untilDestroyed(this)).subscribe(params => {
       const isValidCategory = this.gameCategories.includes(params['gameType']);
       if (!isValidCategory) {
-        this.router.navigate(['/games', 'new']);
+        this.router.navigate(['/games', 'top']);
       }
 
       this.currentCategory = params['gameType'];
@@ -57,6 +57,7 @@ export class GamesFeedComponent implements OnInit, OnDestroy {
 
     this.allGames = games.map(game => ({
       ...game,
+      isNew: game.categories.includes(GameCategory.NewGames),
       jackpot: gameIdsWithJackpot[game.id],
     }));
     this.otherCategories = this.getOtherCategories();
